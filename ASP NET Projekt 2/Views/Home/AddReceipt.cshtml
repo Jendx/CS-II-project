@@ -1,0 +1,174 @@
+﻿@model AddReceiptForm
+@using ASP_NET_Projekt_2.Models;
+@using Datalayer;
+@using System.Web;
+@using System.Text.Json;
+@{
+    ViewData["Title"] = "Home Page";
+ List<Polozka> zbozi = ViewBag.data;
+
+ List<int> p = new List<int>();
+ List<string> n = new List<string>();
+ List<float> pr = new List<float>();
+ foreach (var s in zbozi)
+ {
+     p.Add(s.id);
+     n.Add(s.Nazev);
+     pr.Add(s.Cena);
+ }
+
+}
+
+
+<div class="text-center">
+
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            @Html.LabelFor(x => x.PC)
+            @Html.DropDownListFor(x => x.PC, new SelectList(p))
+            @Html.ValidationMessageFor(x => x.PC)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Name)
+            @Html.DropDownListFor(x => x.Name, new SelectList(n))
+            @Html.ValidationMessageFor(x => x.Name)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Price)
+            @Html.TextBoxFor(x => x.Price) Kč
+            @Html.ValidationMessageFor(x => x.Price)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Weight)
+            @Html.TextBoxFor(x => x.Weight) Kg
+            @Html.ValidationMessageFor(x => x.Weight)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.Count)
+            @Html.TextBoxFor(x => x.Count)
+            @Html.ValidationMessageFor(x => x.Count)
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-2">Add</button>
+    }
+
+    @{
+        List<AddReceiptForm> list = new List<AddReceiptForm>();
+        object d;
+        if (TempData.TryGetValue("data", out d))
+        {
+            int i = 0;
+            list = JsonSerializer.Deserialize<List<AddReceiptForm>>((string)d);
+
+            <h2>Current Receipt</h2>
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Product code</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Weight</th>
+                        <th scope="col">Count</th>
+                        <th scope="col"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ foreach (var a in list)
+                        {
+                            <tr>
+                                <th scope="row">@i</th>
+                                <th>@a.PC</th>
+                                <th>@a.Name</th>
+                                <th>@a.Price</th>
+                                <th>@a.Weight</th>
+                                <th>@a.Count</th>
+                                @using (Html.BeginForm(FormMethod.Post))
+                                {
+                                    <input type="hidden" name="PC" value="# @i" />
+                                    <td><button type="submit" value="Delete #@i" class="btn btn-primary mb-2">Remove #@i</button></td>
+                                }
+                            </tr>
+                            i++;
+
+                        }
+
+                    }
+                </tbody>
+            </table>
+            @using (Html.BeginForm("Save", "Home", FormMethod.Post, new { data = list } ))
+            {
+                <input type="hidden" name="data" value="@list" />
+                <td><button type="submit" value="" class="btn btn-primary mb-2">Save</button></td>
+            }
+        }
+    }
+
+</div>
+
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        $('#PC').change(function () {
+            var val = 0;
+            val = $("select[name='PC'] option:selected").index();
+            var name = new Array();
+            var price = new Array();
+
+                    @foreach(var i in n)
+                    {
+                        @:name.push( "@Html.Raw(HttpUtility.JavaScriptStringEncode(i))");
+                        //@:name.push( "Pepa" );
+                    }
+
+                    @foreach(var i in pr)
+                    {
+                        @:price.push( @i);
+                        //@:name.push( "Pepa" );
+                    }
+
+            $('#Name').val(name[val]);
+            $('#Price').val(price[val]);
+
+            $('#Weight').val(0);
+            $('#Count').val(1);
+
+            //alert(zb[val])
+        });
+
+        $('#Name').change(function () {
+            var val = 0;
+            val = $("select[name='Name'] option:selected").index();
+            var name = new Array(); // PC
+            var price = new Array();
+
+                    @foreach(var i in p)
+                    {
+                        @:name.push( @i );
+                        //@:name.push( "Pepa" );
+                    }
+
+                    @foreach(var i in pr)
+                    {
+                        @:price.push( @i);
+                        //@:name.push( "Pepa" );
+                    }
+
+            $('#PC').val(name[val]);
+            $('#Price').val(price[val]);
+
+            $('#Weight').val(0);
+            $('#Count').val(0);
+
+            //alert(zb[val])
+        });
+    });
+</script>

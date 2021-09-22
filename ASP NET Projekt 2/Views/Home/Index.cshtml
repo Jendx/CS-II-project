@@ -1,0 +1,28 @@
+﻿@model LoginForm
+@using ASP_NET_Projekt_2.Models;
+@{
+
+    Layout = "_LayoutNoMenu";
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+
+        @using (Html.BeginForm(FormMethod.Post))
+        {
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                @Html.LabelFor(x => x.Name)
+                @Html.TextBoxFor(x => x.Name)
+                @Html.ValidationMessageFor(x => x.Name)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(x => x.Password)
+                @Html.TextBoxFor(x => x.Password)
+                @Html.ValidationMessageFor(x => x.Password)
+            </div>
+
+            <button type="submit" class="btn btn-primary mb-2">Login</button>
+        }
+</div>

@@ -1,0 +1,20 @@
+﻿@model LoginForm
+@using ASP_NET_Projekt_2.Models;
+@{
+
+    ViewData["Title"] = "Home Page";
+
+    Byte[] b = new Byte[20];
+    string result = "error";
+    if (Context.Session.TryGetValue("Username", out b))
+    {
+        result = System.Text.Encoding.UTF8.GetString(b);
+    }
+    
+}
+
+<div class="text-center">
+
+    <h1>Welcome back @result !</h1>
+
+</div>

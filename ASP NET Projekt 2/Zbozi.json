@@ -1,0 +1,100 @@
+[
+  {
+    "id": 4843,
+    "Nazev": "Rohlik",
+    "Cena": 1.90,
+    "vaha": 0,
+    "pocet": 1
+  },
+  {
+    "id": 1234,
+    "Nazev": "Kokos",
+    "Cena": 10.90,
+    "vaha": 0,
+    "pocet": 1
+  },
+  {
+    "id": 4846,
+    "Nazev": "Chleba Kmin",
+    "Cena": 26.90,
+    "vaha": 0,
+    "pocet": 1
+  },
+  {
+    "id": 2234,
+    "Nazev": "Parek",
+    "Cena": 14.10,
+    "vaha": 0,
+    "pocet": 1
+  },
+  {
+    "id": 3234,
+    "Nazev": "Burek syr",
+    "Cena": 14.10,
+    "vaha": 0,
+    "pocet": 1
+  },
+  {
+    "id": 4234,
+    "Nazev": "Parek v rohliku",
+    "Cena": 10.19,
+    "vaha": 0,
+    "pocet": 1
+  },
+  {
+    "id": 6969,
+    "Nazev": "Jablecna Kapsa",
+    "Cena": 13.19,
+    "vaha": 0,
+    "pocet": 1
+  },
+  {
+    "id": 6666,
+    "Nazev": "Bohusovo dedictvy",
+    "Cena": 1000000,
+    "vaha": 0,
+    "pocet": 1
+  },
+  {
+    "id": 1111,
+    "Nazev": "Chleba Mariansky",
+    "Cena": 26.19,
+    "vaha": 0,
+    "pocet": 1
+  },
+  {
+    "id": 7770,
+    "Nazev": "Cisaruv rohlik",
+    "Cena": 69.19,
+    "vaha": 0,
+    "pocet": 1
+  },
+  {
+    "id": 2222,
+    "Nazev": "Burek Spenat",
+    "Cena": 14.19,
+    "vaha": 0,
+    "pocet": 1
+  },
+  {
+    "id": 3333,
+    "Nazev": "Croasant",
+    "Cena": 13.19,
+    "vaha": 0,
+    "pocet": 1
+  },
+  {
+    "id": 4444,
+    "Nazev": "Doughnut",
+    "Cena": 7.19,
+    "vaha": 0,
+    "pocet": 1
+  },
+  {
+    "id": 9600,
+    "Nazev": "Houska",
+    "Cena": 2.90,
+    "vaha": 0,
+    "pocet": 1
+  }
+]
